@@ -32,5 +32,13 @@ namespace DataAccessLibrary.DataAccess
                 return cnn.Execute(sql, data);
             }
         }
+
+        public static T GetSingleData<T>(string sql)
+        {
+            using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
+            {
+                return cnn.Query<T>(sql).ToList()[0];
+            }
+        }
     }
 }

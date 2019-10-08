@@ -5,21 +5,22 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using DataAccessLibrary.Models;
 
 namespace EShopWebUI.Controllers
 {
     public class UserController : ApiController
     {
         // GET: api/User
-        public List<DataAccessLibrary.Models.UserModel> Get()
+        public List<UserModel> Get()
         {
             return UserProcessor.GetUsers();
         }
 
         // GET: api/User/5
-        public string Get(int id)
+        public UserModel Get(int id)
         {
-            return "value";
+            return UserProcessor.GetUser(id);
         }
 
         // POST: api/User

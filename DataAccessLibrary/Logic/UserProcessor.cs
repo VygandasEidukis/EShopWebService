@@ -30,5 +30,11 @@ namespace DataAccessLibrary.Logic
 
             return DataAccess.DataAccess.LoadData<UserModel>(sql);
         }
+
+        public static UserModel GetUser(int id)
+        {
+            var sql = $"select * from dbo.Account where Id = {id};";
+            return DataAccess.DataAccess.GetSingleData<UserModel>(sql);
+        }
     }
 }
