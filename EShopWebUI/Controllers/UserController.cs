@@ -47,7 +47,10 @@ namespace EShopWebUI.Controllers
         {
             if(user != null)
             {
-                //if()
+                if(user.LogIn())
+                {
+                    return UserProcessor.GetUserByUsername(user.Username);
+                }
             }
             return null;
         }

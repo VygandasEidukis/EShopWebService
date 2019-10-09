@@ -45,7 +45,13 @@ namespace DataAccessLibrary.Models
 
         public bool LogIn()
         {
-
+            if(Username != null && Password != null)
+            {
+                if(Username.Length < 50 && Password.Length < 50)
+                {
+                    return UserProcessor.IsValidLogin(this);
+                }
+            }
             return false;
         }
     }
