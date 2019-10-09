@@ -12,7 +12,7 @@ namespace DataAccessLibrary.DataAccess
 {
     public static class DataAccess
     {
-        public static string GetConnectionString(string connectionName = "EShioSQLDatabase")
+        private static string GetConnectionString(string connectionName = "EShioSQLDatabase")
         {
             return ConfigurationManager.ConnectionStrings[1].ConnectionString;
         }

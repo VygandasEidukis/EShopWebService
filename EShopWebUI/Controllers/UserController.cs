@@ -28,9 +28,16 @@ namespace EShopWebUI.Controllers
 
         // Register user
         // POST: api/User
-        public int Post([FromBody]UserModel user)
+        public Tuple<string,int> Post([FromBody]UserModel user)
         {
-            return UserProcessor.CreateUser(user);
+            if(user.RegisterUser())
+            {
+                return new Tuple<string, int>("Succsessfully registered.",1);
+            }
+            else
+            {
+                return new Tuple<string, int>("Account failed to register",0);
+            }
         }
 
         // Log in user
@@ -38,7 +45,11 @@ namespace EShopWebUI.Controllers
         [Route("Api/User/LogIn")]
         public UserModel LogIn([FromBody]UserModel user)
         {
-            return new UserModel();
+            if(user != null)
+            {
+                //if()
+            }
+            return null;
         }
 
         // Update user

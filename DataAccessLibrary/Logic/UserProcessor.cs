@@ -11,8 +11,8 @@ namespace DataAccessLibrary.Logic
     {
         public static int CreateUser(UserModel user)
         {
-            var sql = @"INSERT INTO dbo.Account (FirstName, LastName,Password) 
-                    VALUES (@FirstName, @LastName, @Password);";
+            var sql = @"INSERT INTO dbo.Account (FirstName, LastName,Password, Email, Username, Icon) 
+                    VALUES (@FirstName, @LastName, @Password, @Email, @Username, @Icon);";
 
             return DataAccess.DataAccess.SaveData<UserModel>(sql, user);
         }
@@ -28,6 +28,12 @@ namespace DataAccessLibrary.Logic
         {
             var sql = $"select * from dbo.Account where Id = {id};";
             return DataAccess.DataAccess.GetSingleData<UserModel>(sql);
+        }
+
+        public static bool IsUsernameUnique(string username)
+        {
+            var sql = $"select * from dbo.Account where Username = '{username}'";
+            return DataAccess.DataAccess.LoadData<UserModel>(sql).ToArray().Length == 0;
         }
     }
 }
