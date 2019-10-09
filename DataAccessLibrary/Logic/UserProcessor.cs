@@ -9,15 +9,8 @@ namespace DataAccessLibrary.Logic
 {
     public static class UserProcessor
     {
-        public static int CreateUser(string firstName, string lastName, string password)
+        public static int CreateUser(UserModel user)
         {
-            var user = new UserModel
-            {
-                FirstName = firstName,
-                LastName = lastName,
-                Password = password
-            };
-
             var sql = @"INSERT INTO dbo.Account (FirstName, LastName,Password) 
                     VALUES (@FirstName, @LastName, @Password);";
 

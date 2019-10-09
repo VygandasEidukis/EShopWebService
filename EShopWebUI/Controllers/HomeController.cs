@@ -10,7 +10,7 @@ namespace EShopWebUI.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "API page";
 
             return View();
         }
