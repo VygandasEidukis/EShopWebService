@@ -28,15 +28,15 @@ namespace EShopWebUI.Controllers
 
         // Register user
         // POST: api/User
-        public Tuple<string,int> Post([FromBody]UserModel user)
+        public int Post([FromBody]UserModel user)
         {
             if(user.RegisterUser())
             {
-                return new Tuple<string, int>("Succsessfully registered.",1);
+                return 1;
             }
             else
             {
-                return new Tuple<string, int>("Account failed to register",0);
+                return 0;
             }
         }
 
