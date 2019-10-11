@@ -16,7 +16,7 @@ namespace DataAccessLibrary.Models
         public string Password { get; set; }
         public string Email { get; set; }
         public string Username { get; set; }
-        public byte[] Icon { get; set; }
+        public string IconPath { get; set; }
 
         public bool RegisterUser()
         {

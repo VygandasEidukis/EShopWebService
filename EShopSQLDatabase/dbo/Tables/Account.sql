@@ -6,5 +6,5 @@
     [Password] NVARCHAR(50) NOT NULL, 
     [Email] NVARCHAR(100) NOT NULL, 
     [Username] NVARCHAR(50) NOT NULL, 
-    [Icon] VARBINARY(8000) NULL
+    [IconPath] NVARCHAR(250) NULL
 )

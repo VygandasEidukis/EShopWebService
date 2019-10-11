@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary.Models
 {
-    class ImageModel
+    public class ImageModel
     {
-        public int? Id { get; set; }
-        public byte[] ImageBytes { get; set; }
-        public int? ProductID { get; set; }
+        public int Id { get; set; }
+        public string ImagePath { get; set; }
+        public int ProductID { get; set; }
     }
 }

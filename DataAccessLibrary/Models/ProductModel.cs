@@ -13,7 +13,9 @@ namespace DataAccessLibrary.Models
         public string Description { get; set; }
         public double Price { get; set; }
         public int UserID { get; set; }
-        
+
+        public List<string> ImagePaths { get; set; }
+
         ///Image
     }
 }

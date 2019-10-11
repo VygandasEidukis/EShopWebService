@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\DataAccess.cs" />
+    <Compile Include="Logic\ProductProcessor.cs" />
     <Compile Include="Logic\UserProcessor.cs" />
     <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
