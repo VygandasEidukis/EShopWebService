@@ -1,4 +1,6 @@
-﻿using EShopWebUI.Controllers.Helpers;
+﻿using DataAccessLibrary.Logic;
+using DataAccessLibrary.Models;
+using EShopWebUI.Controllers.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,7 +34,8 @@ namespace EShopWebUI.Controllers
                 var filePath = Path.Combine(root, name);
                 File.Move(localFileName, filePath);
 
-                ImageHelper.RenameFileToUnique(filePath);
+                string newName = ImageHelper.RenameFileToUnique(filePath);
+                ImageProcessor.AddProductImage(new ImageModel() { ImagePath = newName, ProductID = ProductID });
             }
             catch (Exception ex)
             {
