@@ -24,9 +24,18 @@ namespace EShopWebUI.Controllers
             return ProductProcessor.GetProduct(id);
         }
 
-        // POST: api/Product
-        public void Post([FromBody]ProductModel value)
+        // GET: api/Product/User/1
+        [HttpGet]
+        [Route("api/Product/User/{UserID:int}")]
+        public List<ProductModel> GetUserProducts(int UserID)
         {
+            return ProductProcessor.GetProductsByUser(UserID);
+        }
+
+        // POST: api/Product
+        public void Post([FromBody]ProductModel product)
+        {
+            ProductProcessor.CreateProduct(product);
         }
 
         // PUT: api/Product/5

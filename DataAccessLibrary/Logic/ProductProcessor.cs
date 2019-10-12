@@ -35,6 +35,28 @@ namespace DataAccessLibrary.Logic
             return product;
         }
 
+        public static List<ProductModel> GetProductsByUser(int userID)
+        {
+            var sql = $"select * from dbo.Product WHERE UserID = {userID};";
+            var products = DataAccess.DataAccess.LoadData<ProductModel>(sql);
+
+            //get product images
+            foreach (ProductModel product in products)
+            {
+                GetProductImages(product);
+            }
+
+            return products;
+        }
+
+        public static int CreateProduct(ProductModel product)
+        {
+            var sql = @"INSERT INTO dbo.Product (Name, Description,Price, UserID) 
+                    VALUES (@Name, @Description, @Price, @UserID);";
+
+            return DataAccess.DataAccess.SaveData<ProductModel>(sql, product);
+        }
+
         public static ProductModel GetProductImages(ProductModel product)
         {
             product.ProductImages = ImageProcessor.GetProductImages(product.Id);
