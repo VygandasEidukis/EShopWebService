@@ -9,8 +9,6 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "EShopSQLDatabase", "EShopSQ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLibrary", "DataAccessLibrary\DataAccessLibrary.csproj", "{3C6D0EF9-425E-4210-8809-E4BE0FA136B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EShopUI", "EShopUI\EShopUI.csproj", "{6A768A07-0C06-429C-BAC6-B77AFF576C7E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,10 +29,6 @@ Global
 		{3C6D0EF9-425E-4210-8809-E4BE0FA136B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C6D0EF9-425E-4210-8809-E4BE0FA136B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C6D0EF9-425E-4210-8809-E4BE0FA136B0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6A768A07-0C06-429C-BAC6-B77AFF576C7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6A768A07-0C06-429C-BAC6-B77AFF576C7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6A768A07-0C06-429C-BAC6-B77AFF576C7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6A768A07-0C06-429C-BAC6-B77AFF576C7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

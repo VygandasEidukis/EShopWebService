@@ -15,5 +15,12 @@ namespace DataAccessLibrary.Logic
 
             DataAccess.DataAccess.SaveData<ImageModel>(sql, image);
         }
+
+        public static List<ImageModel> GetProductImages(int productID)
+        {
+            var sql = $"select * from dbo.ProductImage where ProductID = {productID};";
+
+            return DataAccess.DataAccess.LoadData<ImageModel>(sql);
+        }
     }
 }

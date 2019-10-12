@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Http;
 
 namespace EShopWebUI.Controllers
@@ -17,10 +18,10 @@ namespace EShopWebUI.Controllers
     {
         [HttpPost]
         [Route("api/Image/{ProductID:int}")]
-        public async Task PostImage(int ProductID)
+        public async Task PostProductImage(int ProductID)
         {
             var context = HttpContext.Current;
-            var root = context.Server.MapPath("~/App_Data/Images");
+            var root = context.Server.MapPath("~/Resources/Images");
             var provider = new MultipartFormDataStreamProvider(root);
             string name;
 
@@ -41,6 +42,19 @@ namespace EShopWebUI.Controllers
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        [HttpGet]
+        [Route("api/Image/{ProductID:int}")]
+        public List<ImageModel> GetProductImages(int ProductID)
+        {
+            return ImageProcessor.GetProductImages(ProductID);
+        }
+
+        [HttpPost]
+        [Route("api/Image/Recieve")]
+        public void test()
+        {
         }
 
     }
