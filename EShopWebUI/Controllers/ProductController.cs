@@ -12,6 +12,7 @@ namespace EShopWebUI.Controllers
     public class ProductController : ApiController
     {
         // GET: api/Product
+        //gets all existing producsts
         public List<ProductModel> Get()
         {
             return ProductProcessor.GetProducts();

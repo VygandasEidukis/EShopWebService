@@ -11,12 +11,36 @@ namespace DataAccessLibrary.Logic
     {
         public static List<ProductModel> GetProducts()
         {
-            return new List<ProductModel>();
+            var sql = $"select * from dbo.Product;";
+            var products = DataAccess.DataAccess.LoadData<ProductModel>(sql);
+
+            //get product images
+            foreach(ProductModel product in products)
+            {
+                GetProductImages(product);
+            }
+
+            return products;
         }
 
         public static ProductModel GetProduct(int id)
         {
-            return new ProductModel() { Description = "test", Name = "test", Id = 1, UserID = 1, Price = 1.5f };
+            var sql = $"select * from dbo.Product WHERE Id = {id};";
+
+            var product = DataAccess.DataAccess.GetSingleData<ProductModel>(sql);
+
+            //get product images
+            GetProductImages(product);
+
+            return product;
         }
+
+        public static ProductModel GetProductImages(ProductModel product)
+        {
+            product.ProductImages = ImageProcessor.GetProductImages(product.Id);
+            return product;
+        }
+
+
     }
 }
