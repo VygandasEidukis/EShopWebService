@@ -14,4 +14,46 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="FirstName" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="c5142210-b49e-4a68-9479-eb9fb8e30246" ChangeDateTime="10/11/2019 17:53:14">
+    <Property Name="ElementName" Value="[dbo].[ProductImage].[varbinary(8000)]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ProductImage]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Image" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="49a2450f-3870-4716-b97f-a5338cf934ef" ChangeDateTime="10/11/2019 17:53:23">
+    <Property Name="ElementName" Value="[dbo].[ProductImage].[Image]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ProductImage]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ImagePath" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6a9250b6-da60-4e4c-8098-7b8dae7a0c1a" ChangeDateTime="10/11/2019 17:54:45">
+    <Property Name="ElementName" Value="[dbo].[FK_ProductImage_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[ProductImage]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Product]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2bd3d317-6e8f-4097-bcfd-0f6f7ecdbc2e" ChangeDateTime="10/11/2019 18:00:21">
+    <Property Name="ElementName" Value="[dbo].[FK_Product_User]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Product]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Product_Account]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="fd559d76-9b40-4824-a003-fe09963c5252" ChangeDateTime="10/11/2019 18:01:04">
+    <Property Name="ElementName" Value="[dbo].[Account].[Icon]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Account]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IconPath" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c154681a-8155-410e-aa10-5daf909fc0c1" ChangeDateTime="10/13/2019 09:40:12">
+    <Property Name="ElementName" Value="[dbo].[Account].[IconPath]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Account]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Icon" />
+  </Operation>
 </Operations>

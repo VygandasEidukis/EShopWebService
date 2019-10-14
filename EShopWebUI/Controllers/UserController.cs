@@ -30,7 +30,14 @@ namespace EShopWebUI.Controllers
         // POST: api/User
         public int Post([FromBody]UserModel user)
         {
-            return UserProcessor.CreateUser(user);
+            if(user.RegisterUser())
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         // Log in user
@@ -38,7 +45,14 @@ namespace EShopWebUI.Controllers
         [Route("Api/User/LogIn")]
         public UserModel LogIn([FromBody]UserModel user)
         {
-            return new UserModel();
+            if(user != null)
+            {
+                if(user.LogIn())
+                {
+                    return UserProcessor.GetUserByUsername(user.Username);
+                }
+            }
+            return null;
         }
 
         // Update user
