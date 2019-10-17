@@ -49,11 +49,11 @@ namespace DataAccessLibrary.Logic
             return products;
         }
 
-        public static int CreateProduct(ProductModel product)
+        public static async Task<int> CreateProduct(ProductModel product)
         {
             var sql = @"INSERT INTO dbo.Product (Name, Description,Price, UserID) 
                     VALUES (@Name, @Description, @Price, @UserID);
-                    SELECT SCOPE_IDENTITY();";
+                    SELECT CAST(SCOPE_IDENTITY() as int);";
 
             return DataAccess.DataAccess.SaveData<ProductModel>(sql, product);
         }

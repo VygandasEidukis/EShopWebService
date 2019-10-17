@@ -11,7 +11,7 @@ namespace DataAccessLibrary.Logic
     {
         public static void AddProductImage(ImageModel image)
         {
-            var sql = $"INSERT INTO dbo.ProductImage (ImagePath, ProductID) VALUES (@ImagePath, @ProductID);";
+            var sql = $"INSERT INTO dbo.ProductImage (ImagePath, ProductID) VALUES (@ImagePath, @ProductID); SELECT CAST(SCOPE_IDENTITY() as int); ";
 
             DataAccess.DataAccess.SaveData<ImageModel>(sql, image);
         }

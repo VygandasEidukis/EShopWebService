@@ -29,7 +29,9 @@ namespace DataAccessLibrary.DataAccess
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
             {
-                return cnn.Query<int>(sql, data).ToArray()[0];
+                var response = cnn.Query<int>(sql, data).Single();
+                return response;
+                throw new Exception("Unexpected error while writing data");
             }
         }
 

@@ -23,7 +23,7 @@ namespace EShopWebUI.Controllers
             ImageModel saveImage = new ImageModel();
             string ImagePath = HostingEnvironment.MapPath("~/Resources/Images/") + $"{ImageHelper.GenerateRandomName()}{image.FileExtension}";
             saveImage.SaveBytesToImage(image.Image, ImagePath);
-            ImageProcessor.AddProductImage(new ImageModel() { ImagePath = Path.GetFileNameWithoutExtension(ImagePath), ProductID = ProductID });
+            ImageProcessor.AddProductImage(new ImageModel() { ImagePath = Path.GetFileName(ImagePath), ProductID = ProductID });
         }
 
         [HttpGet]

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace EShopWebUI.Controllers
@@ -33,9 +34,9 @@ namespace EShopWebUI.Controllers
         }
 
         // POST: api/Product
-        public int Post([FromBody]ProductModel product)
+        public async Task<int> Post([FromBody]ProductModel product)
         {
-            int id = ProductProcessor.CreateProduct(product);
+            int id = await ProductProcessor.CreateProduct(product);
             return id;
         }
 
