@@ -52,7 +52,8 @@ namespace DataAccessLibrary.Logic
         public static int CreateProduct(ProductModel product)
         {
             var sql = @"INSERT INTO dbo.Product (Name, Description,Price, UserID) 
-                    VALUES (@Name, @Description, @Price, @UserID);";
+                    VALUES (@Name, @Description, @Price, @UserID);
+                    SELECT SCOPE_IDENTITY();";
 
             return DataAccess.DataAccess.SaveData<ProductModel>(sql, product);
         }

@@ -52,6 +52,7 @@
     <Compile Include="Logic\UserProcessor.cs" />
     <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\SingleImageModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -18,30 +18,12 @@ namespace EShopWebUI.Controllers
     {
         [HttpPost]
         [Route("api/Image/{ProductID:int}")]
-        public async Task PostProductImage(int ProductID)
+        public void PostProductImage([FromBody]SingleImageModel image, int ProductID)
         {
-            var context = HttpContext.Current;
-            var root = context.Server.MapPath("~/Resources/Images");
-            var provider = new MultipartFormDataStreamProvider(root);
-            string name;
-
-            try
-            {
-                await Request.Content.ReadAsMultipartAsync(provider);
-                var file = provider.FileData[0];
-                name = file.Headers.ContentDisposition.FileName;
-                name = name.Trim('"');
-                var localFileName = file.LocalFileName;
-                var filePath = Path.Combine(root, name);
-                File.Move(localFileName, filePath);
-
-                string newName = ImageHelper.RenameFileToUnique(filePath);
-                ImageProcessor.AddProductImage(new ImageModel() { ImagePath = newName, ProductID = ProductID });
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            ImageModel saveImage = new ImageModel();
+            string ImagePath = HostingEnvironment.MapPath("~/Resources/Images/") + $"{ImageHelper.GenerateRandomName()}{image.FileExtension}";
+            saveImage.SaveBytesToImage(image.Image, ImagePath);
+            ImageProcessor.AddProductImage(new ImageModel() { ImagePath = Path.GetFileNameWithoutExtension(ImagePath), ProductID = ProductID });
         }
 
         [HttpGet]
@@ -49,12 +31,6 @@ namespace EShopWebUI.Controllers
         public List<ImageModel> GetProductImages(int ProductID)
         {
             return ImageProcessor.GetProductImages(ProductID);
-        }
-
-        [HttpPost]
-        [Route("api/Image/Recieve")]
-        public void test()
-        {
         }
 
     }

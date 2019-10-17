@@ -33,9 +33,10 @@ namespace EShopWebUI.Controllers
         }
 
         // POST: api/Product
-        public void Post([FromBody]ProductModel product)
+        public int Post([FromBody]ProductModel product)
         {
-            ProductProcessor.CreateProduct(product);
+            int id = ProductProcessor.CreateProduct(product);
+            return id;
         }
 
         // PUT: api/Product/5

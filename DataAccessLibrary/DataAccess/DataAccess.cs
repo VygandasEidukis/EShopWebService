@@ -29,7 +29,7 @@ namespace DataAccessLibrary.DataAccess
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
             {
-                return cnn.Execute(sql, data);
+                return cnn.Query<int>(sql, data).ToArray()[0];
             }
         }
 
