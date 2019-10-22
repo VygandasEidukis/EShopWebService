@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web.Http;
 using DataAccessLibrary.Models;
 using System.Drawing;
+using DataAccessLibrary.DataAccess;
 
 namespace EShopWebUI.Controllers
 {
@@ -30,7 +31,7 @@ namespace EShopWebUI.Controllers
         // POST: api/User
         public int Post([FromBody]UserModel user)
         {
-            if(user.RegisterUser())
+            if (user.RegisterUser())
             {
                 return 1;
             }
@@ -45,9 +46,9 @@ namespace EShopWebUI.Controllers
         [Route("Api/User/LogIn")]
         public UserModel LogIn([FromBody]UserModel user)
         {
-            if(user != null)
+            if (user != null)
             {
-                if(user.LogIn())
+                if (user.LogIn())
                 {
                     return UserProcessor.GetUserByUsername(user.Username);
                 }

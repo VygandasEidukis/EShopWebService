@@ -1,4 +1,5 @@
-﻿using DataAccessLibrary.Logic;
+﻿using DataAccessLibrary.DataAccess;
+using DataAccessLibrary.Logic;
 using DataAccessLibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -16,13 +17,14 @@ namespace EShopWebUI.Controllers
         //gets all existing producsts
         public List<ProductModel> Get()
         {
-            return ProductProcessor.GetProducts();
+                return ProductProcessor.GetProducts();
+
         }
 
         // GET: api/Product/5
         public ProductModel Get(int id)
         {
-            return ProductProcessor.GetProduct(id);
+                return ProductProcessor.GetProduct(id);
         }
 
         // GET: api/Product/User/1
@@ -30,7 +32,7 @@ namespace EShopWebUI.Controllers
         [Route("api/Product/User/{UserID:int}")]
         public List<ProductModel> GetUserProducts(int UserID)
         {
-            return ProductProcessor.GetProductsByUser(UserID);
+                return ProductProcessor.GetProductsByUser(UserID);
         }
 
         // POST: api/Product

@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace DataAccessLibrary.DataAccess
 {
-    public static class DataAccess
+    public class DataAccess
     {
         private static string GetConnectionString(string connectionName = "EShioSQLDatabase")
         {
