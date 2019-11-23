@@ -17,21 +17,22 @@ namespace EShopWebUI.Controllers
 {
     public class ImageController : ApiController
     {
+
         [HttpPost]
         [Route("api/Image/{ProductID:int}")]
         public void PostProductImage([FromBody]SingleImageModel image, int ProductID)
         {
-            ImageModel saveImage = new ImageModel();
-            string ImagePath = HostingEnvironment.MapPath("~/Resources/Images/") + $"{ImageHelper.GenerateRandomName()}{image.FileExtension}";
-            saveImage.SaveBytesToImage(image.Image, ImagePath);
-            ImageProcessor.AddProductImage(new ImageModel() { ImagePath = Path.GetFileName(ImagePath), ProductID = ProductID });
+            var saveImage = new ImageModel();
+            var imagePath = HostingEnvironment.MapPath("~/Resources/Images/") + $"{ImageHelper.GenerateRandomName()}{image.FileExtension}";
+            saveImage.SaveBytesToImage(image.Image, imagePath);
+            ImageProcessor.AddProductImage(new ImageModel() { ImagePath = Path.GetFileName(imagePath), ProductID = ProductID });
         }
 
         [HttpGet]
         [Route("api/Image/{ProductID:int}")]
-        public List<ImageModel> GetProductImages(int ProductID)
+        public List<ImageModel> GetProductImages(int productId)
         {
-            return ImageProcessor.GetProductImages(ProductID);
+            return ImageProcessor.GetProductImages(productId);
         }
 
     }

@@ -64,6 +64,9 @@
     <Build Include="dbo\Tables\Account.sql" />
     <Build Include="dbo\Tables\Product.sql" />
     <Build Include="dbo\Tables\ProductImage.sql" />
+    <Build Include="dbo\Tables\OrderProducts.sql" />
+    <Build Include="dbo\Tables\Orders.sql" />
+    <Build Include="dbo\Tables\OrderType.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish profiles\EShopSQLDatabase.publish.xml" />
