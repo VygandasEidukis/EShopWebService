@@ -35,6 +35,14 @@ namespace DataAccessLibrary.DataAccess
             }
         }
 
+        public static async void ExecuteQuery(string sql)
+        {
+            using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
+            {
+                await cnn.QueryAsync(sql);
+            }
+        }
+
         public static T GetSingleData<T>(string sql)
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
@@ -42,5 +50,7 @@ namespace DataAccessLibrary.DataAccess
                 return cnn.Query<T>(sql).ToList()[0];
             }
         }
+
+        
     }
 }

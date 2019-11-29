@@ -1,5 +1,6 @@
 ﻿CREATE TABLE [dbo].[OrderType]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [OrderType] VARCHAR(50) NOT NULL
+	
 )

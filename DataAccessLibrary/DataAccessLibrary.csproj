@@ -47,10 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\DataAccess.cs" />
+    <Compile Include="Logic\CartProcessor.cs" />
     <Compile Include="Logic\ImageProcessor.cs" />
     <Compile Include="Logic\ProductProcessor.cs" />
     <Compile Include="Logic\SearchProcessor.cs" />
     <Compile Include="Logic\UserProcessor.cs" />
+    <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\SingleImageModel.cs" />

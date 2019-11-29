@@ -55,12 +55,5 @@ namespace EShopWebUI.Controllers
             }
             return null;
         }
-
-        // Update user
-        // PUT: api/User/5
-        public void Put(int id, [FromBody]UserModel userToUpdate)
-        {
-
-        }
     }
 }

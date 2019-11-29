@@ -17,14 +17,13 @@ namespace EShopWebUI.Controllers
         //gets all existing producsts
         public List<ProductModel> Get()
         {
-                return ProductProcessor.GetProducts();
-
+            return ProductProcessor.GetProducts();
         }
 
         // GET: api/Product/5
         public ProductModel Get(int id)
         {
-                return ProductProcessor.GetProduct(id);
+            return ProductProcessor.GetProduct(id);
         }
 
         // GET: api/Product/User/1
@@ -40,11 +39,6 @@ namespace EShopWebUI.Controllers
         {
             int id = await ProductProcessor.CreateProduct(product);
             return id;
-        }
-
-        // PUT: api/Product/5
-        public void Put(int id, [FromBody]ProductModel value)
-        {
         }
 
         // DELETE: api/Product/5
