@@ -1,4 +1,5 @@
-﻿using DataAccessLibrary.Logic;
+﻿using DataAccessLibrary.DataAccess;
+using DataAccessLibrary.Logic;
 using DataAccessLibrary.Models;
 using EShopWebUI.Controllers.Helpers;
 using System;
@@ -16,45 +17,22 @@ namespace EShopWebUI.Controllers
 {
     public class ImageController : ApiController
     {
+
         [HttpPost]
         [Route("api/Image/{ProductID:int}")]
-        public async Task PostProductImage(int ProductID)
+        public void PostProductImage([FromBody]SingleImageModel image, int ProductID)
         {
-            var context = HttpContext.Current;
-            var root = context.Server.MapPath("~/Resources/Images");
-            var provider = new MultipartFormDataStreamProvider(root);
-            string name;
-
-            try
-            {
-                await Request.Content.ReadAsMultipartAsync(provider);
-                var file = provider.FileData[0];
-                name = file.Headers.ContentDisposition.FileName;
-                name = name.Trim('"');
-                var localFileName = file.LocalFileName;
-                var filePath = Path.Combine(root, name);
-                File.Move(localFileName, filePath);
-
-                string newName = ImageHelper.RenameFileToUnique(filePath);
-                ImageProcessor.AddProductImage(new ImageModel() { ImagePath = newName, ProductID = ProductID });
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            var saveImage = new ImageModel();
+            var imagePath = HostingEnvironment.MapPath("~/Resources/Images/") + $"{ImageHelper.GenerateRandomName()}{image.FileExtension}";
+            saveImage.SaveBytesToImage(image.Image, imagePath);
+            ImageProcessor.AddProductImage(new ImageModel() { ImagePath = Path.GetFileName(imagePath), ProductID = ProductID });
         }
 
         [HttpGet]
         [Route("api/Image/{ProductID:int}")]
-        public List<ImageModel> GetProductImages(int ProductID)
+        public List<ImageModel> GetProductImages(int productId)
         {
-            return ImageProcessor.GetProductImages(ProductID);
-        }
-
-        [HttpPost]
-        [Route("api/Image/Recieve")]
-        public void test()
-        {
+            return ImageProcessor.GetProductImages(productId);
         }
 
     }

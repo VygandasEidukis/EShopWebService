@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace DataAccessLibrary.DataAccess
 {
-    public static class DataAccess
+    public class DataAccess
     {
         private static string GetConnectionString(string connectionName = "EShioSQLDatabase")
         {
@@ -29,7 +29,17 @@ namespace DataAccessLibrary.DataAccess
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
             {
-                return cnn.Execute(sql, data);
+                var response = cnn.Query<int>(sql, data).Single();
+                return response;
+                throw new Exception("Unexpected error while writing data");
+            }
+        }
+
+        public static async void ExecuteQuery(string sql)
+        {
+            using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
+            {
+                await cnn.QueryAsync(sql);
             }
         }
 
@@ -40,5 +50,7 @@ namespace DataAccessLibrary.DataAccess
                 return cnn.Query<T>(sql).ToList()[0];
             }
         }
+
+        
     }
 }

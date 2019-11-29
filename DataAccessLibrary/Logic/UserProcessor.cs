@@ -9,11 +9,12 @@ namespace DataAccessLibrary.Logic
 {
     public static class UserProcessor
     {
-        private static string AllowedFetchUserData { get; set; } = "Id,FirstName, LastName, Email, Username, Icon";
+        public static string AllowedFetchUserData { get; set; } = "Id,FirstName, LastName, Email, Username, Icon";
         public static int CreateUser(UserModel user)
         {
             var sql = @"INSERT INTO dbo.Account (FirstName, LastName,Password, Email, Username) 
-                    VALUES (@FirstName, @LastName, @Password, @Email, @Username);";
+                    VALUES (@FirstName, @LastName, @Password, @Email, @Username);
+                    SELECT CAST(SCOPE_IDENTITY() as int);";
 
             return DataAccess.DataAccess.SaveData<UserModel>(sql, user);
         }

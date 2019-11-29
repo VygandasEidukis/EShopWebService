@@ -60,7 +60,7 @@ namespace System.IO
     {
         public static void Rename(this FileInfo fileInfo, string newName)
         {
-            fileInfo.MoveTo(fileInfo.Directory.FullName + "\\" + newName);
+            fileInfo.MoveTo(fileInfo.Directory?.FullName + "\\" + newName);
         }
     }
 }
