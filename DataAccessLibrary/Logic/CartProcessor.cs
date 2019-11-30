@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,15 @@ namespace DataAccessLibrary.Logic
 {
     public static class CartProcessor
     {
+        public static void BuyProducts(int userId, int cartId)
+        {
+            var sql = $@"if (select top 1 count(*) from OrderProducts where OrderProducts.OrdersID = {cartId} ) > 0
+                        begin
+	                        update Orders set OrderTypeID = 2 where Orders.UserID = {userId} and Orders.OrderTypeID = 1
+                        end";
+            DataAccess.DataAccess.ExecuteQuery(sql);
+        }
+
         public static void CreateCart(UserModel user)
         {
             var sql = $@"if not exists(select * from dbo.Orders where UserID = {user.Id})
@@ -17,6 +27,19 @@ namespace DataAccessLibrary.Logic
                         end";
 
             DataAccess.DataAccess.ExecuteQuery(sql);
+        }
+
+        public static int GetActiveCartId(int userId)
+        {
+            var sql = $@"select top 1 * from Orders where UserID = {userId} and OrderTypeID = 1";
+            try
+            {
+                return DataAccess.DataAccess.GetSingleData<int>(sql);
+            }
+            catch
+            {
+                return 0;
+            }
         }
 
         public static void AddProductToCart(int product, UserModel user)
@@ -59,9 +82,9 @@ namespace DataAccessLibrary.Logic
 
             var productIds = DataAccess.DataAccess.LoadData<int>(sql);
             var products = new List<ProductModel>();
+            if (productIds.Count <= 0) return products;
             foreach (var pid in productIds)
                 products.Add(ProductProcessor.GetProduct(pid));
-
             return products;
         }
     }

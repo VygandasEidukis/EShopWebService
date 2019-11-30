@@ -52,5 +52,15 @@ namespace EShopWebUI.Controllers
         {
             return CartProcessor.GetCartProducts(userId);
         }
+
+        //Purchase from cart
+        [HttpGet]
+        [Route("api/Cart/Purchase/{userId:int}")]
+        public void Purchase(int userId)
+        {
+            int cartId = CartProcessor.GetActiveCartId(userId);
+            if(cartId != 0)
+                CartProcessor.BuyProducts(userId, cartId);
+        }
     }
 }
