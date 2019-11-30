@@ -13,31 +13,44 @@ namespace EShopWebUI.Controllers
     {
         //create cart for user (if doesn't have one available)
         [HttpGet]
-        [Route("api/Cart/Create/{UserID:int}")]
+        [Route("api/Cart/Create/{userId:int}")]
         public string CreateCart(int userId)
         {
-            CartProcessor.CreateCart(UserProcessor.GetUser(userId));
-            return "Cart created";
+            try
+            {
+                CartProcessor.CreateCart(UserProcessor.GetUser(userId));
+                return "Cart created";
+            }
+            catch (Exception e)
+            {
+                return $"Cart creation failed: {e.Message}";
+            }
         }
 
         //Add product
-        [HttpPost]
-        [Route("api/Cart/Add/{UserID:int}")]
-        public string AddProduct([FromBody] ProductModel product, int userId)
+        [HttpGet]
+        [Route("api/Cart/Add/{userId:int}/{productId:int}")]
+        public string AddProduct(int productId, int userId)
         {
-            if (product == null) return "Failed to add product, no product received";
-            CartProcessor.AddProductToCart(product, UserProcessor.GetUser(userId));
+            CartProcessor.AddProductToCart(productId, UserProcessor.GetUser(userId));
             return "Product has been added";
         }
 
-        //Add product
-        [HttpPost]
-        [Route("api/Cart/Remove/{UserID:int}")]
-        public string RemoveProduct([FromBody] ProductModel product, int userId)
+        //Remove product
+        [HttpGet]
+        [Route("api/Cart/Remove/{userId:int}/{productId:int}")]
+        public string RemoveProduct(int productId, int userId)
         {
-            if (product == null) return "Failed to remove product, no product received";
-            CartProcessor.RemoveProductFromCart(product, UserProcessor.GetUser(userId));
+            CartProcessor.RemoveProductFromCart(productId, userId);
             return "Product has been removed";
+        }
+        
+        //return cart products
+        [HttpGet]
+        [Route("api/Cart/{userId:int}")]
+        public List<ProductModel> GetProducts(int userId)
+        {
+            return CartProcessor.GetCartProducts(userId);
         }
     }
 }

@@ -19,28 +19,45 @@ namespace DataAccessLibrary.Logic
             DataAccess.DataAccess.ExecuteQuery(sql);
         }
 
-        public static void AddProductToCart(ProductModel product, UserModel user)
+        public static void AddProductToCart(int product, UserModel user)
         {
             var sql = $@"if exists(select top 1 Id from Orders where UserID = {user.Id} and OrderTypeID = 1)
                         begin
 	                        INSERT INTO dbo.OrderProducts (ProductID, OrdersID) 
-                            values ({product.Id}, cast((select top 1 Id  from Orders where UserID = {user.Id} and OrderTypeID = 1) as int))
+                            values ({product}, cast((select top 1 Id  from Orders where UserID = {user.Id} and OrderTypeID = 1) as int))
                         end";
 
             DataAccess.DataAccess.ExecuteQuery(sql);
         }
 
-        public static void RemoveProductFromCart(ProductModel product, UserModel user)
+        public static void RemoveProductFromCart(int product, int user)
         {
-            var sql = $@"if exists(select top 1 Id from Orders where UserID = {user.Id} and OrderTypeID = 1)
+            var sql = $@"if exists(select top 1 Id from Orders where UserID = {user} and OrderTypeID = 1)
                         begin
 	                        DELETE TOP(1) FROM OrderProducts 
-                            WHERE OrderProducts.ProductID = {product.Id} 
-                            and OrderProducts.OrdersID = (select top 1 Id from Orders where UserID = {user.Id} and OrderTypeID = 1)
+                            WHERE OrderProducts.ProductID = {product} 
+                            and OrderProducts.OrdersID = (select top 1 Id from Orders where UserID = {user} and OrderTypeID = 1)
 	                        select * from OrderProducts
                         end"; 
             
             DataAccess.DataAccess.ExecuteQuery(sql);
+        }
+
+        public static List<ProductModel> GetCartProducts(int userId)
+        {
+            var sql = $@"if exists(select top 1 Id from Orders where UserID = {userId} and OrderTypeID = 1)
+                        begin
+	                        select op.ProductID from Orders as o
+	                        inner join OrderProducts as op on op.OrdersID = o.Id
+	                        where o.OrderTypeID = 1 and o.UserID = {userId}
+                        end";
+
+            var productIds = DataAccess.DataAccess.LoadData<int>(sql);
+            var products = new List<ProductModel>();
+            foreach (var pid in productIds)
+                products.Add(ProductProcessor.GetProduct(pid));
+
+            return products;
         }
     }
 }

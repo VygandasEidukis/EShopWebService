@@ -23,6 +23,7 @@ namespace DataAccessLibrary.Logic
             return products;
         }
 
+
         public static ProductModel GetProduct(int id)
         {
             var sql = $"select * from dbo.Product WHERE Id = {id};";
