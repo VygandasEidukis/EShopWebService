@@ -21,11 +21,16 @@ namespace DataAccessLibrary.Logic
 
         public static void AddProductToCart(int product, UserModel user)
         {
-            var sql = $@"if exists(select top 1 Id from Orders where UserID = {user.Id} and OrderTypeID = 1)
+
+            //if in progress cart doesn't exist for user, create it
+            //add product to OrderProducts
+            var sql = $@"if not exists(select top 1 Id from Orders where UserID = {user.Id} and OrderTypeID = 1)
                         begin
-	                        INSERT INTO dbo.OrderProducts (ProductID, OrdersID) 
-                            values ({product}, cast((select top 1 Id  from Orders where UserID = {user.Id} and OrderTypeID = 1) as int))
-                        end";
+	                        INSERT INTO dbo.Orders (UserID) values ({user.Id})
+                        end
+                        INSERT INTO dbo.OrderProducts (ProductID, OrdersID) 
+                        values ({product}, cast((select top 1 Id  from Orders where UserID = {user.Id} and OrderTypeID = 1) as int))
+                        ";
 
             DataAccess.DataAccess.ExecuteQuery(sql);
         }
