@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[ProductType]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [TypeName] VARCHAR(50) NOT NULL
+	
+)

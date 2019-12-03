@@ -5,5 +5,6 @@
     [Description] TEXT NOT NULL, 
     [Price] MONEY NOT NULL, 
     [UserID] INT NOT NULL, 
+    [CategoryID] INT NOT NULL, 
     CONSTRAINT [FK_Product_Account] FOREIGN KEY ([UserID]) REFERENCES [Account]([Id]) 
 )

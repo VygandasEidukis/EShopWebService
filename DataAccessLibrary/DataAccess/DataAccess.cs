@@ -35,11 +35,11 @@ namespace DataAccessLibrary.DataAccess
             }
         }
 
-        public static async void ExecuteQuery(string sql)
+        public static void ExecuteQuery(string sql)
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
             {
-                await cnn.QueryAsync(sql);
+                cnn.Query(sql);
             }
         }
 

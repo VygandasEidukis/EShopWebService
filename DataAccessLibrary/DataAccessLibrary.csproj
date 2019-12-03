@@ -50,11 +50,13 @@
     <Compile Include="Logic\CartProcessor.cs" />
     <Compile Include="Logic\ImageProcessor.cs" />
     <Compile Include="Logic\ProductProcessor.cs" />
+    <Compile Include="Logic\ProductTypeProcessor.cs" />
     <Compile Include="Logic\SearchProcessor.cs" />
     <Compile Include="Logic\UserProcessor.cs" />
     <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\ProductType.cs" />
     <Compile Include="Models\SingleImageModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
