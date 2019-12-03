@@ -18,11 +18,11 @@ namespace DataAccessLibrary.Logic
             foreach(ProductModel product in products)
             {
                 GetProductImages(product);
+                product.ProductType = ProductTypeProcessor.GetType(product.CategoryID);
             }
 
             return products;
         }
-
 
         public static ProductModel GetProduct(int id)
         {

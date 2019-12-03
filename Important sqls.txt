@@ -1,0 +1,2 @@
+insert into OrderType (OrderType.OrderType) values ('Krepselyje'), ('uzsakytas')
+insert into ProductType (TypeName) values ('Kompiuteriai'), ('Telefonai'), ('Monitoriai'), ('Kompiuteriu dalys'), ('Zaidimai'), ('Kita');

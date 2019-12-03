@@ -31,11 +31,19 @@ namespace EShopWebUI.Controllers
         [Route("api/Product/User/{UserID:int}")]
         public List<ProductModel> GetUserProducts(int UserID)
         {
-                return ProductProcessor.GetProductsByUser(UserID);
+            return ProductProcessor.GetProductsByUser(UserID);
+        }
+
+        // GET: api/Product/Type/
+        [HttpGet]
+        [Route("api/Product/Type/")]
+        public List<ProductType> GetProductTypes()
+        {
+            return ProductTypeProcessor.GetAllTypes();
         }
 
         // POST: api/Product
-        public async Task<int> Post([FromBody]ProductModel product)
+        public async Task<int> Post([FromBody] ProductModel product)
         {
             int id = await ProductProcessor.CreateProduct(product);
             return id;
