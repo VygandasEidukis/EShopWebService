@@ -36,6 +36,12 @@ namespace DataAccessLibrary.Logic
             return product;
         }
 
+        public static List<ProductModel> GetProductsByType(int categoryId)
+        {
+            var sql = $"select * from dbo.product where CategoryID = {categoryId}";
+            return DataAccess.DataAccess.LoadData<ProductModel>(sql);
+        }
+
         public static List<ProductModel> GetProductsByUser(int userID)
         {
             var sql = $"select * from dbo.Product WHERE UserID = {userID};";
@@ -52,8 +58,8 @@ namespace DataAccessLibrary.Logic
 
         public static async Task<int> CreateProduct(ProductModel product)
         {
-            var sql = @"INSERT INTO dbo.Product (Name, Description,Price, UserID) 
-                    VALUES (@Name, @Description, @Price, @UserID);
+            var sql = @"INSERT INTO dbo.Product (Name, Description,Price, UserID,CategoryID) 
+                    VALUES (@Name, @Description, @Price, @UserID, @CategoryID);
                     SELECT CAST(SCOPE_IDENTITY() as int);";
 
             return DataAccess.DataAccess.SaveData<ProductModel>(sql, product);

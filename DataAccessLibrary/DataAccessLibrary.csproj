@@ -54,6 +54,7 @@
     <Compile Include="Logic\SearchProcessor.cs" />
     <Compile Include="Logic\UserProcessor.cs" />
     <Compile Include="Models\CartModel.cs" />
+    <Compile Include="Models\EuklideanModel.cs" />
     <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\ProductType.cs" />
