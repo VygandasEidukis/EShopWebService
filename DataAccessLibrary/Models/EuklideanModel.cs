@@ -26,13 +26,13 @@ namespace DataAccessLibrary.Models
             List<double> productsPrice = new List<double>();
             foreach (var product in products)
             {
-                product.ClassificationValue = Math.Sqrt( Math.Pow(product.Price - Price , 2));
+                product.ClassificationValue = Math.Sqrt( Math.Pow(product.Price - Price, 2));
             }
         }
 
         public List<ProductModel> RetrieveValidProducts(int count, List<ProductModel> products)
         {
-            products.OrderBy(p => p.ClassificationValue).ToList();
+            products = products.OrderBy(p => p.ClassificationValue).ToList();
             
             var validProducts = new List<ProductModel>();
             for (int i = 0; i < count; i++)
