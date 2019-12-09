@@ -18,5 +18,7 @@ namespace DataAccessLibrary.Models
         public ProductType ProductType { get; set; }
         public List<ImageModel> ProductImages { get; set; }
 
+        public double ClassificationValue { get; set; }
+
     }
 }

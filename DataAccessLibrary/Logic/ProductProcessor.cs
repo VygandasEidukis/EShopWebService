@@ -14,16 +14,8 @@ namespace DataAccessLibrary.Logic
             var sql = $"select * from dbo.Product;";
             var products = DataAccess.DataAccess.LoadData<ProductModel>(sql);
 
-            //get product images
-            foreach(ProductModel product in products)
-            {
-                GetProductImages(product);
-                product.ProductType = ProductTypeProcessor.GetType(product.CategoryID);
-            }
-
-            return products;
+            return PrepareProducts(products);
         }
-
         public static ProductModel GetProduct(int id)
         {
             var sql = $"select * from dbo.Product WHERE Id = {id};";
@@ -32,39 +24,46 @@ namespace DataAccessLibrary.Logic
 
             //get product images
             GetProductImages(product);
+            product.ProductType = ProductTypeProcessor.GetType(product.CategoryID);
 
             return product;
         }
+        public static List<ProductModel> GetProductsByType(int categoryId)
+        {
+            var sql = $"select * from dbo.product where CategoryID = {categoryId}";
+            var products = DataAccess.DataAccess.LoadData<ProductModel>(sql);
 
+            return PrepareProducts(products);
+        }
         public static List<ProductModel> GetProductsByUser(int userID)
         {
             var sql = $"select * from dbo.Product WHERE UserID = {userID};";
             var products = DataAccess.DataAccess.LoadData<ProductModel>(sql);
 
-            //get product images
+            return PrepareProducts(products);
+        }
+        private static List<ProductModel> PrepareProducts(List<ProductModel> products)
+        {
             foreach (ProductModel product in products)
             {
                 GetProductImages(product);
+                product.ProductType = ProductTypeProcessor.GetType(product.CategoryID);
             }
 
             return products;
         }
-
         public static async Task<int> CreateProduct(ProductModel product)
         {
-            var sql = @"INSERT INTO dbo.Product (Name, Description,Price, UserID) 
-                    VALUES (@Name, @Description, @Price, @UserID);
+            var sql = @"INSERT INTO dbo.Product (Name, Description,Price, UserID,CategoryID) 
+                    VALUES (@Name, @Description, @Price, @UserID, @CategoryID);
                     SELECT CAST(SCOPE_IDENTITY() as int);";
 
             return DataAccess.DataAccess.SaveData<ProductModel>(sql, product);
         }
-
         public static ProductModel GetProductImages(ProductModel product)
         {
             product.ProductImages = ImageProcessor.GetProductImages(product.Id);
             return product;
         }
-
-
     }
 }

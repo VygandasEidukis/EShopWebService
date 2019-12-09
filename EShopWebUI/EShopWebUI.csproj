@@ -60,6 +60,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="arm, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\cs-arm-apriori.1.0.1\lib\net461\Release\arm.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -170,6 +173,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AprioriController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
@@ -277,6 +281,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AprioriLibrary\AprioriLibrary.csproj">
+      <Project>{f7304891-688b-4c33-aa93-ecb2831081e1}</Project>
+      <Name>AprioriLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataAccessLibrary\DataAccessLibrary.csproj">
       <Project>{3c6d0ef9-425e-4210-8809-e4be0fa136b0}</Project>
       <Name>DataAccessLibrary</Name>

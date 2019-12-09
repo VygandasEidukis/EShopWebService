@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using DataAccessLibrary.Models;
 using System.Web.Http;
 
 namespace EShopWebUI.Controllers
@@ -16,6 +17,13 @@ namespace EShopWebUI.Controllers
         public List<UserModel> SearchUserByUsername(string username)
         {
             return SearchProcessor.SearchByUsername(username);
+        }
+
+        [HttpPost]
+        [Route("api/Product/Search/Euclidean/")]
+        public List<ProductModel> SearchByEuklidean([FromBody] EuklideanModel  euklidean)
+        {
+            return euklidean.SearchProductsList();
         }
     }
 }
