@@ -23,7 +23,6 @@ namespace EShopWebUI.Controllers
         [Route("api/Product/Search/Euclidean/")]
         public List<ProductModel> SearchByEuklidean([FromBody] EuklideanModel  euklidean)
         {
-            return new EuklideanModel(){ Price = 450, ProductType = new ProductType(){ Id = 5, TypeName = "Zaidimai"} }.SearchProductsList();
             return euklidean.SearchProductsList();
         }
     }

@@ -49,6 +49,7 @@
     <Compile Include="DataAccess\DataAccess.cs" />
     <Compile Include="Logic\CartProcessor.cs" />
     <Compile Include="Logic\ImageProcessor.cs" />
+    <Compile Include="Logic\OrderProcessor.cs" />
     <Compile Include="Logic\ProductProcessor.cs" />
     <Compile Include="Logic\ProductTypeProcessor.cs" />
     <Compile Include="Logic\SearchProcessor.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\EuklideanModel.cs" />
     <Compile Include="Models\ImageModel.cs" />
+    <Compile Include="Models\OrderProducts.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\ProductType.cs" />
     <Compile Include="Models\SingleImageModel.cs" />
