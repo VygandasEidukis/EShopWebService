@@ -28,6 +28,20 @@ namespace EShopWebUI.Controllers
             ImageProcessor.AddProductImage(new ImageModel() { ImagePath = Path.GetFileName(imagePath), ProductID = ProductID });
         }
 
+        [HttpPost]
+        [Route("api/Image/Update/{ImageId:int}")]
+        public void UpdateProductImage([FromBody]SingleImageModel image, int ImageId)
+        {
+            string imagePath = HostingEnvironment.MapPath("~/Resources/Images/") + ImageProcessor.GetImagePath(ImageId);
+            if (File.Exists(imagePath))
+            {
+                File.Delete(imagePath);
+            }
+
+            var saveImage = new ImageModel();
+            saveImage.SaveBytesToImage(image.Image, imagePath);
+        }
+
         [HttpGet]
         [Route("api/Image/{ProductID:int}")]
         public List<ImageModel> GetProductImages(int productId)
