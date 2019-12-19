@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLibrary", "DataAc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AprioriLibrary", "AprioriLibrary\AprioriLibrary.csproj", "{F7304891-688B-4C33-AA93-ECB2831081E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLibraryTests", "DataAccessLibraryTests\DataAccessLibraryTests.csproj", "{EA7A824C-C030-451D-B701-8D527A5B2007}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AprioriLibraryTests", "AprioriLibraryTests\AprioriLibraryTests.csproj", "{81DE2E2D-0AB7-451D-9140-1638351FBD4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +39,14 @@ Global
 		{F7304891-688B-4C33-AA93-ECB2831081E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7304891-688B-4C33-AA93-ECB2831081E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7304891-688B-4C33-AA93-ECB2831081E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA7A824C-C030-451D-B701-8D527A5B2007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA7A824C-C030-451D-B701-8D527A5B2007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA7A824C-C030-451D-B701-8D527A5B2007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA7A824C-C030-451D-B701-8D527A5B2007}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81DE2E2D-0AB7-451D-9140-1638351FBD4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81DE2E2D-0AB7-451D-9140-1638351FBD4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81DE2E2D-0AB7-451D-9140-1638351FBD4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81DE2E2D-0AB7-451D-9140-1638351FBD4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

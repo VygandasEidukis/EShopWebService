@@ -8,7 +8,7 @@ using AprioriLibrary.Model;
 
 namespace AprioriLibrary.Data
 {
-    class LoadProductsById : ILoadProducts
+    public class LoadProductsById : ILoadProducts
     {
         public List<Product> LoadProducts(List<List<int>> allProducts)
         {
