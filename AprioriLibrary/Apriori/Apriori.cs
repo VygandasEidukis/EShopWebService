@@ -146,6 +146,9 @@ namespace AprioriLibrary.Apriori
 
         public  int getItemCount(List<Product> FRoot, Product Product)
         {
+            if (FRoot == null || Product == null)
+                throw new Exception();
+
             for (int i = 0; i < FRoot.Count; i++)
             {
                 if (FRoot[i].itemset.Count == Product.itemset.Count)
@@ -161,6 +164,9 @@ namespace AprioriLibrary.Apriori
 
         public  bool is2ItemEquals(Product item1, Product item2)
         {
+            if (item1 == null || item2 == null)
+                throw new Exception("No item set");
+
             for (int i = 0; i < item2.itemset.Count; i++)
             {
                 if (!(item1.itemset[i] == item2.itemset[i]))

@@ -21,6 +21,8 @@ namespace DataAccessLibrary.Models
 
         public void CalculateClassificationValue(List<ProductModel> products)
         {
+            if (products == null)
+                throw new Exception("No products");
             List<double> productsPrice = new List<double>();
             foreach (var product in products)
             {

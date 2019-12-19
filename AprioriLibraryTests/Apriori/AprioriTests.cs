@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using AprioriLibrary.Model;
+using System;
 
 namespace AprioriLibrary.Apriori.Tests
 {
@@ -23,11 +24,17 @@ namespace AprioriLibrary.Apriori.Tests
         }
 
         [TestMethod()]
-        public void getItemCountTest()
+        public void getItemCountTest_GetsItemCount_WithCorrectData_Pass()
         {
             var actual = apriori.getItemCount(InitialProducts, new Product("shoes"));
             var expected = 0;
             Assert.AreEqual(expected, actual, 0.001);
+        }
+
+        [TestMethod()]
+        public void getItemCountTest_GetsItemCount_WithFalseData_Fail()
+        {
+            Assert.ThrowsException<Exception>(()=> apriori.getItemCount(InitialProducts, null));
         }
 
         [TestMethod()]
@@ -40,6 +47,12 @@ namespace AprioriLibrary.Apriori.Tests
         public void is2ItemEqualsTest_FirstItemOnInitialProductList_NewProductDifferentName_False_Success()
         {
             Assert.IsFalse(apriori.is2ItemEquals(InitialProducts[0], new Product("bird")));
+        }
+
+        [TestMethod()]
+        public void is2ItemEqualsTest_FirstItemOnInitialProductList_NoProducts_Flse_Fail()
+        {
+            Assert.ThrowsException<Exception>(()=> apriori.is2ItemEquals(null, null));
         }
     }
 }

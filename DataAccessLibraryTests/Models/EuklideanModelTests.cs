@@ -22,12 +22,19 @@ namespace DataAccessLibrary.Models.Tests
         }
 
         [TestMethod()]
-        public void CalculateClassificationValueTest()
+        public void CalculateClassificationValueTest_WithCorrectClassification_Pass()
         {
             var expected = new ProductModel() { ClassificationValue = 5 }.ClassificationValue;
             euklidean.CalculateClassificationValue(products);
             var actual = products[1].ClassificationValue;
             Assert.AreEqual(expected, actual, 0.001);
+        }
+
+        [TestMethod()]
+        public void CalculateClassificationValueTest_WithNullData_Fail()
+        {
+            var expected = new ProductModel() { ClassificationValue = 5 }.ClassificationValue;
+            Assert.ThrowsException<Exception>(()=> euklidean.CalculateClassificationValue(null));
         }
 
         [TestMethod()]
