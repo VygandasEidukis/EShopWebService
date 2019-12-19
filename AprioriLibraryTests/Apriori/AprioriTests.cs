@@ -1,10 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AprioriLibrary.Apriori;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AprioriLibrary.Model;
 
 namespace AprioriLibrary.Apriori.Tests
