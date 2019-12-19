@@ -13,6 +13,13 @@ namespace EShopWebUI.Controllers
 {
     public class ProductController : ApiController
     {
+        [HttpPost]
+        [Route("api/Product/Update/{ProductID:int}")]
+        public void UpdateProduct([FromBody] ProductModel product)
+        {
+            ProductProcessor.UpdateProduct(product);
+        }
+
         // GET: api/Product
         //gets all existing producsts
         public List<ProductModel> Get()

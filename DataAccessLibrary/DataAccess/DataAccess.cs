@@ -43,14 +43,20 @@ namespace DataAccessLibrary.DataAccess
             }
         }
 
+        public static void UpdateQuery<T>(string sql, T data)
+        {
+            using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
+            {
+                cnn.Query<int>(sql, data);
+            }
+        }
+
         public static T GetSingleData<T>(string sql)
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
             {
                 return cnn.Query<T>(sql).ToList()[0];
             }
-        }
-
-        
+        }        
     }
 }

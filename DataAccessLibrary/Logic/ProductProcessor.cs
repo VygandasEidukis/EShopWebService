@@ -65,5 +65,12 @@ namespace DataAccessLibrary.Logic
             product.ProductImages = ImageProcessor.GetProductImages(product.Id);
             return product;
         }
+        public static void UpdateProduct(ProductModel product)
+        {
+            var sql = $@"UPDATE dbo.Product set
+                        Name = @Name, Description = @Description, Price = @Price, CategoryID = @CategoryID where Id = {product.Id}";
+
+            DataAccess.DataAccess.UpdateQuery<ProductModel>(sql, product);
+        }
     }
 }
