@@ -33,11 +33,12 @@ namespace DataAccessLibrary.Models
         public List<ProductModel> RetrieveValidProducts(int count, List<ProductModel> products)
         {
             products = products.OrderBy(p => p.ClassificationValue).ToList();
-            
+               
             var validProducts = new List<ProductModel>();
             for (int i = 0; i < count; i++)
             {
-                validProducts.Add(products[i]);
+                if(products.Count() >= i)
+                    validProducts.Add(products[i]);
             }
             return validProducts;
         }
